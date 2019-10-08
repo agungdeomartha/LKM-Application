@@ -71,7 +71,8 @@ Public Class Form1
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
 
         If Button4.Text = "TUTUP" Then
-            End
+            Me.Close()
+            MenuUtama.Show()
         Else
             Call KondisiAwal()
         End If
@@ -161,4 +162,33 @@ Public Class Form1
         End If
     End Sub
 
+    Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
+        Call Koneksi()
+        Dim HapusData As String = "Delete TBL_MAHASISWA where NIM='" & TextBox1.Text & "'"
+        Cmd = New SqlCommand(HapusData, Conn)
+        Cmd.ExecuteNonQuery()
+        MsgBox("Data Berhasil DiHapus")
+        Call KondisiAwal()
+    End Sub
+
+    Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+        Dim index As Integer
+        index = e.RowIndex
+        Dim selectedRow As DataGridViewRow
+        selectedRow = DataGridView1.Rows(index)
+        TextBox1.Text = selectedRow.Cells(0).Value.ToString()
+        TextBox2.Text = selectedRow.Cells(1).Value.ToString()
+        ComboBox1.Text = selectedRow.Cells(2).Value.ToString()
+        TextBox3.Text = selectedRow.Cells(3).Value.ToString()
+        TextBox4.Text = selectedRow.Cells(4).Value.ToString()
+    End Sub
+
+    Private Sub LogoutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LogoutToolStripMenuItem.Click
+        Me.Hide()
+        MenuUtama.Show()
+    End Sub
+
+    Private Sub ExitToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExitToolStripMenuItem.Click
+        Close()
+    End Sub
 End Class

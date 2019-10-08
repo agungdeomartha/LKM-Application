@@ -8,3 +8,6 @@ D:\LATIHAN\VB.NET CRUD SQL SERVER\AppCrud\AppCrud\obj\Debug\AppCrud.vbproj.Gener
 D:\LATIHAN\VB.NET CRUD SQL SERVER\AppCrud\AppCrud\obj\Debug\AppCrud.exe
 D:\LATIHAN\VB.NET CRUD SQL SERVER\AppCrud\AppCrud\obj\Debug\AppCrud.xml
 D:\LATIHAN\VB.NET CRUD SQL SERVER\AppCrud\AppCrud\obj\Debug\AppCrud.pdb
+D:\LATIHAN\VB.NET CRUD SQL SERVER\AppCrud\AppCrud\bin\Debug\AppCrud.exe.config
+D:\LATIHAN\VB.NET CRUD SQL SERVER\AppCrud\AppCrud\obj\Debug\AppCrud.LoginForm.resources
+D:\LATIHAN\VB.NET CRUD SQL SERVER\AppCrud\AppCrud\obj\Debug\AppCrud.MenuUtama.resources
