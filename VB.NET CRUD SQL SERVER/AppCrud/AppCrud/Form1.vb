@@ -170,19 +170,6 @@ Public Class Form1
         MsgBox("Data Berhasil DiHapus")
         Call KondisiAwal()
     End Sub
-
-    Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-        Dim index As Integer
-        index = e.RowIndex
-        Dim selectedRow As DataGridViewRow
-        selectedRow = DataGridView1.Rows(index)
-        TextBox1.Text = selectedRow.Cells(0).Value.ToString()
-        TextBox2.Text = selectedRow.Cells(1).Value.ToString()
-        ComboBox1.Text = selectedRow.Cells(2).Value.ToString()
-        TextBox3.Text = selectedRow.Cells(3).Value.ToString()
-        TextBox4.Text = selectedRow.Cells(4).Value.ToString()
-    End Sub
-
     Private Sub LogoutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LogoutToolStripMenuItem.Click
         Me.Hide()
         MenuUtama.Show()
@@ -190,5 +177,13 @@ Public Class Form1
 
     Private Sub ExitToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExitToolStripMenuItem.Click
         Close()
+    End Sub
+
+    Private Sub DataGridView1_CellMouseClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles DataGridView1.CellMouseClick
+        TextBox1.Text = DataGridView1.Rows(e.RowIndex).Cells(0).Value
+        TextBox2.Text = DataGridView1.Rows(e.RowIndex).Cells(1).Value
+        ComboBox1.Text = DataGridView1.Rows(e.RowIndex).Cells(2).Value
+        TextBox3.Text = DataGridView1.Rows(e.RowIndex).Cells(3).Value
+        TextBox4.Text = DataGridView1.Rows(e.RowIndex).Cells(4).Value
     End Sub
 End Class
