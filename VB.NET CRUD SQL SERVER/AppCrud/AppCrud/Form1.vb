@@ -21,7 +21,7 @@ Public Class Form1
     End Sub
     Sub KondisiAwal()
         Call Koneksi()
-        Da = New SqlDataAdapter("Select * from TBL_MAHASISWA", Conn)
+        Da = New SqlDataAdapter("Select * from TBL_MAHASISWA order by NIM desc", Conn)
         Ds = New DataSet
         Ds.Clear()
         Da.Fill(Ds, "TBL_MAHASISWA")
@@ -30,7 +30,7 @@ Public Class Form1
         ComboBox1.Items.Add("PRIA")
         ComboBox1.Items.Add("WANITA")
         Call KosongkanData()
-        TextBox1.MaxLength = 6
+        TextBox1.MaxLength = 17
         TextBox2.MaxLength = 50
         TextBox3.MaxLength = 100
         TextBox4.MaxLength = 20
@@ -66,6 +66,7 @@ Public Class Form1
     End Sub
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Call KondisiAwal()
+        Me.KeyPreview = True
     End Sub
 
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
@@ -79,13 +80,28 @@ Public Class Form1
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-
         If Button1.Text = "INPUT" Then
             Button1.Text = "SIMPAN"
             Button2.Enabled = False
             Button3.Enabled = False
             Button4.Text = "BATAL"
             Call SiapIsi()
+            Call Koneksi()
+            Cmd = New SqlCommand("Select * from TBL_MAHASISWA where NIM in (select max(NIM) from TBL_MAHASISWA)", Conn)
+            Dim urutan As String
+            Dim hitung As Long
+            Dim MyDateTime As DateTime = Now()
+            Dim MyString As String
+            MyString = MyDateTime.ToString("yyyy/MM/")
+            Rd = Cmd.ExecuteReader
+            Rd.Read()
+            If Not Rd.HasRows Then
+                urutan = "NIM" + MyString + "000001"
+            Else
+                hitung = Microsoft.VisualBasic.Right(Rd.GetString(0), 3) + 1
+                urutan = "NIM" + MyString + Microsoft.VisualBasic.Right("000000" & hitung, 6)
+            End If
+            TextBox1.Text = urutan
         Else
             If TextBox1.Text = "" Or TextBox2.Text = "" Or TextBox3.Text = "" Or TextBox4.Text = "" Or ComboBox1.Text = "" Then
                 MsgBox("Data Belum Lengkap!, Silahkan isi semua Field")
@@ -180,10 +196,29 @@ Public Class Form1
     End Sub
 
     Private Sub DataGridView1_CellMouseClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles DataGridView1.CellMouseClick
-        TextBox1.Text = DataGridView1.Rows(e.RowIndex).Cells(0).Value
-        TextBox2.Text = DataGridView1.Rows(e.RowIndex).Cells(1).Value
-        ComboBox1.Text = DataGridView1.Rows(e.RowIndex).Cells(2).Value
-        TextBox3.Text = DataGridView1.Rows(e.RowIndex).Cells(3).Value
-        TextBox4.Text = DataGridView1.Rows(e.RowIndex).Cells(4).Value
+        If e.RowIndex >= 0 Then
+            TextBox1.Text = DataGridView1.Rows(e.RowIndex).Cells(0).Value
+            TextBox2.Text = DataGridView1.Rows(e.RowIndex).Cells(1).Value
+            ComboBox1.Text = DataGridView1.Rows(e.RowIndex).Cells(2).Value
+            TextBox3.Text = DataGridView1.Rows(e.RowIndex).Cells(3).Value
+            TextBox4.Text = DataGridView1.Rows(e.RowIndex).Cells(4).Value
+        End If
+    End Sub
+    Private Sub Form1_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
+        Select Case e.KeyCode
+            Case Keys.Delete
+                Call Koneksi()
+                Dim HapusData As String = "Delete TBL_MAHASISWA where NIM='" & TextBox1.Text & "'"
+                Cmd = New SqlCommand(HapusData, Conn)
+                Cmd.ExecuteNonQuery()
+                MsgBox("Data Berhasil DiHapus")
+                Call KondisiAwal()
+            Case Keys.F5 'save
+                '...sintak anda
+            Case Keys.F6 'cancel
+                '...sintak anda
+            Case Keys.F7 'close
+                '...sintak anda
+        End Select
     End Sub
 End Class
