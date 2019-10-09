@@ -1,0 +1,3 @@
+103,SO.001,2014-01-01 00:00:00,Dokumen Order Nomor SO.001,1
+2,SO.002,2014-01-05 00:00:00,Dokumen Order Nomor SO.002,1
+3,SO.003,2014-01-09 00:00:00,Dokumen Order Nomor SO.003,1
