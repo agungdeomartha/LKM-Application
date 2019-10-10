@@ -8,7 +8,9 @@ Public Class Form1
     Dim Ds As DataSet
     Dim MyDB As String
     Sub Koneksi()
-        MyDB = "data source=Computer_Server;initial catalog=DB_APLIKASI;integrated security=true"
+        'data source=Computer_Server;initial catalog=DB_APLIKASI;integrated security=true
+        'Data Source=192.168.100.6,1433;Network Library=DBMSSOCN;Initial Catalog=DB_APLIKASI;User ID=sa;Password=ilyvm;
+        MyDB = "Data Source=192.168.100.6,1433;Network Library=DBMSSOCN;Initial Catalog=DB_APLIKASI;User ID=sa;Password=ilyvm;"
         Conn = New SqlConnection(MyDB)
         If Conn.State = ConnectionState.Closed Then Conn.Open()
     End Sub

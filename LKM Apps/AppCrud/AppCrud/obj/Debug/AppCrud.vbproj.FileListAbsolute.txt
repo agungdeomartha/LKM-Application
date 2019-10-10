@@ -12,3 +12,4 @@ D:\LATIHAN\VB.NET CRUD SQL SERVER\AppCrud\AppCrud\obj\Debug\AppCrud.vbproj.Gener
 D:\LATIHAN\VB.NET CRUD SQL SERVER\AppCrud\AppCrud\obj\Debug\AppCrud.exe
 D:\LATIHAN\VB.NET CRUD SQL SERVER\AppCrud\AppCrud\obj\Debug\AppCrud.xml
 D:\LATIHAN\VB.NET CRUD SQL SERVER\AppCrud\AppCrud\obj\Debug\AppCrud.pdb
+D:\LATIHAN\VB.NET CRUD SQL SERVER\AppCrud\AppCrud\obj\Debug\AppCrud.Form2.resources
