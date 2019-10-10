@@ -86,33 +86,34 @@ Public Class Form1
             Button3.Enabled = False
             Button4.Text = "BATAL"
             Call SiapIsi()
-            Call Koneksi()
-            Cmd = New SqlCommand("Select * from TBL_MAHASISWA where NIM in (select max(NIM) from TBL_MAHASISWA)", Conn)
-            Dim urutan As String
-            Dim hitung As Long
-            Dim MyDateTime As DateTime = Now()
-            Dim MyString As String
-            MyString = MyDateTime.ToString("yyyy/MM/")
-            Rd = Cmd.ExecuteReader
-            Rd.Read()
-            If Not Rd.HasRows Then
-                urutan = "NIM" + MyString + "000001"
-            Else
-                hitung = Microsoft.VisualBasic.Right(Rd.GetString(0), 3) + 1
-                urutan = "NIM" + MyString + Microsoft.VisualBasic.Right("000000" & hitung, 6)
-            End If
-            TextBox1.Text = urutan
+            
         Else
-            If TextBox1.Text = "" Or TextBox2.Text = "" Or TextBox3.Text = "" Or TextBox4.Text = "" Or ComboBox1.Text = "" Then
+            If TextBox2.Text = "" Or TextBox3.Text = "" Or TextBox4.Text = "" Or ComboBox1.Text = "" Then
                 MsgBox("Data Belum Lengkap!, Silahkan isi semua Field")
             Else
                 Call Koneksi()
-                Dim InputData As String = "insert into TBL_MAHASISWA values ('" & TextBox1.Text & "','" & TextBox2.Text & "','" & ComboBox1.Text & "','" & TextBox3.Text & "','" & TextBox4.Text & "')"
-                Cmd = New SqlCommand(InputData, Conn)
-                Cmd.ExecuteNonQuery()
-                MsgBox("Data Berhasil Diinput")
-                Call KondisiAwal()
+                Cmd = New SqlCommand("Select * from TBL_MAHASISWA where NIM in (select max(NIM) from TBL_MAHASISWA)", Conn)
+                Dim urutan As String
+                Dim hitung As Long
+                Dim MyDateTime As DateTime = Now()
+                Dim MyString As String
+                MyString = MyDateTime.ToString("yyyy/MM/")
+                Rd = Cmd.ExecuteReader
+                Rd.Read()
 
+                If Not Rd.HasRows Then
+                    urutan = "NIM" + MyString + "000001"
+                Else
+                    hitung = Microsoft.VisualBasic.Right(Rd.GetString(0), 3) + 1
+                    urutan = "NIM" + MyString + Microsoft.VisualBasic.Right("000000" & hitung, 6)
+
+                    Dim InputData As String = "insert into TBL_MAHASISWA values ('" & urutan & "','" & TextBox2.Text & "','" & ComboBox1.Text & "','" & TextBox3.Text & "','" & TextBox4.Text & "')"
+                    Rd.Close()
+                    Cmd = New SqlCommand(InputData, Conn)
+                    Cmd.ExecuteNonQuery()
+                    MsgBox("Data Berhasil Diinput")
+                    Call KondisiAwal()
+                End If
             End If
         End If
 
@@ -216,6 +217,7 @@ Public Class Form1
                     Cmd.ExecuteNonQuery()
                     MsgBox("Data Berhasil DiHapus")
                     Call KondisiAwal()
+
             End Select
         End If
     End Sub
