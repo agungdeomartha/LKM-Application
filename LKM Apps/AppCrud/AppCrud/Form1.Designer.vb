@@ -78,50 +78,45 @@ Partial Class Form1
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label1.Location = New System.Drawing.Point(36, 63)
+        Me.Label1.Location = New System.Drawing.Point(57, 64)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(29, 15)
+        Me.Label1.Size = New System.Drawing.Size(27, 13)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "NIM"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label2.Location = New System.Drawing.Point(36, 84)
+        Me.Label2.Location = New System.Drawing.Point(57, 85)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(37, 15)
+        Me.Label2.Size = New System.Drawing.Size(35, 13)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Nama"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label3.Location = New System.Drawing.Point(35, 109)
+        Me.Label3.Location = New System.Drawing.Point(56, 110)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(73, 15)
+        Me.Label3.Size = New System.Drawing.Size(71, 13)
         Me.Label3.TabIndex = 3
         Me.Label3.Text = "Jenis Kelamin"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label4.Location = New System.Drawing.Point(35, 133)
+        Me.Label4.Location = New System.Drawing.Point(56, 134)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(41, 15)
+        Me.Label4.Size = New System.Drawing.Size(39, 13)
         Me.Label4.TabIndex = 4
         Me.Label4.Text = "Alamat"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label5.Location = New System.Drawing.Point(35, 159)
+        Me.Label5.Location = New System.Drawing.Point(56, 160)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(48, 15)
+        Me.Label5.Size = New System.Drawing.Size(46, 13)
         Me.Label5.TabIndex = 5
         Me.Label5.Text = "Telepon"
         '
@@ -168,6 +163,7 @@ Partial Class Form1
         '
         'Button1
         '
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.Location = New System.Drawing.Point(133, 198)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(98, 35)
@@ -177,6 +173,7 @@ Partial Class Form1
         '
         'Button2
         '
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.Location = New System.Drawing.Point(237, 198)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(98, 35)
@@ -186,6 +183,7 @@ Partial Class Form1
         '
         'Button3
         '
+        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button3.Location = New System.Drawing.Point(341, 198)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(98, 35)
@@ -195,12 +193,14 @@ Partial Class Form1
         '
         'Button4
         '
+        Me.Button4.BackColor = System.Drawing.Color.Transparent
+        Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button4.Location = New System.Drawing.Point(445, 198)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(98, 35)
         Me.Button4.TabIndex = 14
         Me.Button4.Text = "CLOSE"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.Button4.UseVisualStyleBackColor = False
         '
         'Button5
         '
@@ -240,18 +240,18 @@ Partial Class Form1
         'LogoutToolStripMenuItem
         '
         Me.LogoutToolStripMenuItem.Name = "LogoutToolStripMenuItem"
-        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
+        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.LogoutToolStripMenuItem.Text = "Logout"
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(109, 6)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(149, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'TransaksiToolStripMenuItem
@@ -412,18 +412,20 @@ Partial Class Form1
         '
         'Button6
         '
-        Me.Button6.Location = New System.Drawing.Point(357, 60)
+        Me.Button6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button6.Location = New System.Drawing.Point(367, 59)
         Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(81, 21)
+        Me.Button6.Size = New System.Drawing.Size(65, 23)
         Me.Button6.TabIndex = 18
         Me.Button6.Text = "Refresh"
         Me.Button6.UseVisualStyleBackColor = True
         '
         'Button7
         '
+        Me.Button7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button7.Location = New System.Drawing.Point(312, 59)
         Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(42, 23)
+        Me.Button7.Size = New System.Drawing.Size(53, 23)
         Me.Button7.TabIndex = 19
         Me.Button7.Text = "Paste"
         Me.Button7.UseVisualStyleBackColor = True

@@ -5,7 +5,7 @@ Public Class Form3
         InitializeComponent()
         ' inisialisasi datetimepicker
         InitializeDatePicker()
-        ' inisialisasi combobox jenis transaksi
+        ' inisialisas  i combobox jenis transaksi
         InitializeComboBox()
         ' refresh grid data
         RefreshGrid()

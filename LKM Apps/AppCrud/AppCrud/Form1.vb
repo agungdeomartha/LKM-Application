@@ -10,10 +10,10 @@ Public Class Form1
         TextBox4.Text = ""
     End Sub
     Sub KondisiAwal()
-        Call buka2()
-        'Call buka()
-        'Da = New SqlDataAdapter("Select * from TBL_MAHASISWA order by NIM desc", Conn)
-        Da = New SqlDataAdapter("Select * from PEMBELIAN", Conn)
+        'Call buka2()
+        Call buka()
+        Da = New SqlDataAdapter("Select * from TBL_MAHASISWA order by NIM desc", Conn)
+        'Da = New SqlDataAdapter("Select * from PEMBELIAN", Conn)
         Ds = New DataSet
         Ds.Clear()
         Da.Fill(Ds, "PEMBELIAN")
@@ -43,7 +43,7 @@ Public Class Form1
 
     End Sub
     Sub SiapIsi()
-        TextBox1.Enabled = True
+        TextBox1.Enabled = False
         TextBox2.Enabled = True
         ComboBox1.Enabled = True
         TextBox3.Enabled = True
