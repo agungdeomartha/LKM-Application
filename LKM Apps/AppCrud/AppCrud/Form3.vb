@@ -1,8 +1,5 @@
 ﻿Imports System.Data.SqlClient
-
 Public Class Form3
-    Private Const _cnString As String = "data source=Computer_Server;initial catalog=DB_APLIKASI;integrated security=true"
-
     Public Sub New()
         ' required by form designer
         InitializeComponent()
@@ -21,19 +18,19 @@ Public Class Form3
     End Sub
 
     Private Sub InitializeComboBox()
+        Call buka()
         ' siapkan koneksi database
-        Dim cn As New SqlConnection(_cnString)
         ' siapkan data adapter untuk data retrieval
-        Dim da As New SqlDataAdapter("select * from OrderTypes", cn)
+        Da = New SqlDataAdapter("select * from OrderTypes", Conn)
         ' siapkan datatable untuk menampung data dari database
-        Dim dt As New DataTable
+        Dt = New DataTable
         ' enclose di dalam try-catch block
         ' untuk menghindari crash jika terjadi kesalahan database
         Try
             ' ambil data dari database
-            da.Fill(dt)
+            Da.Fill(Dt)
             ' bind data ke combobox
-            ComboBox1.DataSource = dt
+            ComboBox1.DataSource = Dt
             ComboBox1.ValueMember = "ID"
             ComboBox1.DisplayMember = "Description"
             ' DONE!!!
@@ -44,26 +41,26 @@ Public Class Form3
     End Sub
 
     Private Sub RefreshGrid()
+        Call buka()
         ' siapkan koneksi database
-        Dim cn As New SqlConnection(_cnString)
         ' siapkan data adapter untuk data retrieval
-        Dim da As New SqlDataAdapter("SELECT A.*, B.Description AS TypeName " & _
+        Da = New SqlDataAdapter("SELECT A.*, B.Description AS TypeName " & _
                                      "FROM Orders A JOIN OrderTypes B ON A.TypeID=B.ID " & _
                                      "WHERE OrderNum LIKE @p1 AND TypeID = @t1 " & _
-                                     "AND OrderDate BETWEEN @d1 AND @d2 ", cn)
-        da.SelectCommand.Parameters.AddWithValue("@p1", "%" & TextBox1.Text & "%")
-        da.SelectCommand.Parameters.AddWithValue("@t1", ComboBox1.SelectedValue)
-        da.SelectCommand.Parameters.AddWithValue("@d1", DateTimePicker1.Value.ToString("yyyy-MM-dd"))
-        da.SelectCommand.Parameters.AddWithValue("@d2", DateTimePicker2.Value.ToString("yyyy-MM-dd"))
+                                     "AND OrderDate BETWEEN @d1 AND @d2 ", Conn)
+        Da.SelectCommand.Parameters.AddWithValue("@p1", "%" & TextBox1.Text & "%")
+        Da.SelectCommand.Parameters.AddWithValue("@t1", ComboBox1.SelectedValue)
+        Da.SelectCommand.Parameters.AddWithValue("@d1", DateTimePicker1.Value.ToString("yyyy-MM-dd"))
+        Da.SelectCommand.Parameters.AddWithValue("@d2", DateTimePicker2.Value.ToString("yyyy-MM-dd"))
         ' siapkan datatable untuk menampung data dari database
-        Dim dt As New DataTable
+        Dt = New DataTable
         ' enclose di dalam try-catch block
         ' untuk menghindari crash jika terjadi kesalahan database
         Try
             ' ambil data dari database
-            da.Fill(dt)
+            Da.Fill(Dt)
             ' bind data ke combobox
-            DataGridView1.DataSource = dt
+            DataGridView1.DataSource = Dt
             ' DONE!!!
         Catch ex As Exception
             ' tampilkan pesan error
@@ -76,7 +73,7 @@ Public Class Form3
         RefreshGrid()
     End Sub
 
-   
+
     Private Sub Form3_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
     End Sub

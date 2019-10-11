@@ -73,6 +73,17 @@ Namespace My
                 Return CType(Me("DB_APLIKASIConnectionString"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=COMPUTER_SERVER;Initial Catalog=D:\LKMBENANGEMBROMISDATA\TRANSAKSI.MD"& _ 
+            "F;Integrated Security=True")>  _
+        Public ReadOnly Property D__LKMBENANGEMBROMISDATA_TRANSAKSI_MDFConnectionString() As String
+            Get
+                Return CType(Me("D__LKMBENANGEMBROMISDATA_TRANSAKSI_MDFConnectionString"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 

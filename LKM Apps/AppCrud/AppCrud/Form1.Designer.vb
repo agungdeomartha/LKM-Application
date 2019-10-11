@@ -412,7 +412,7 @@ Partial Class Form1
         '
         'Button6
         '
-        Me.Button6.Location = New System.Drawing.Point(369, 59)
+        Me.Button6.Location = New System.Drawing.Point(357, 60)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(81, 21)
         Me.Button6.TabIndex = 18
@@ -421,9 +421,9 @@ Partial Class Form1
         '
         'Button7
         '
-        Me.Button7.Location = New System.Drawing.Point(321, 59)
+        Me.Button7.Location = New System.Drawing.Point(312, 59)
         Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(42, 24)
+        Me.Button7.Size = New System.Drawing.Size(42, 23)
         Me.Button7.TabIndex = 19
         Me.Button7.Text = "Paste"
         Me.Button7.UseVisualStyleBackColor = True
@@ -432,7 +432,7 @@ Partial Class Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.PeachPuff
+        Me.BackColor = System.Drawing.Color.PowderBlue
         Me.ClientSize = New System.Drawing.Size(821, 454)
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.Button6)
@@ -457,7 +457,7 @@ Partial Class Form1
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Form Create Read Update Delete .NET"
+        Me.Text = "LKM System"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()

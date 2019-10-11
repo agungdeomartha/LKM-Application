@@ -1,19 +1,7 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class Form1
-    Dim Conn As SqlConnection
-    Dim Da As SqlDataAdapter
-    Dim Cmd As SqlCommand
-    Dim Rd As SqlDataReader
-    Dim Ds As DataSet
-    Dim MyDB As String
-    Sub Koneksi()
-        'data source=Computer_Server;initial catalog=DB_APLIKASI;integrated security=true
-        'Data Source=192.168.100.6,1433;Network Library=DBMSSOCN;Initial Catalog=DB_APLIKASI;User ID=sa;Password=ilyvm;
-        MyDB = "Data Source=192.168.100.6,1433;Network Library=DBMSSOCN;Initial Catalog=DB_APLIKASI;User ID=sa;Password=ilyvm;"
-        Conn = New SqlConnection(MyDB)
-        If Conn.State = ConnectionState.Closed Then Conn.Open()
-    End Sub
+   
     Sub KosongkanData()
         TextBox1.Text = ""
         TextBox2.Text = ""
@@ -22,12 +10,14 @@ Public Class Form1
         TextBox4.Text = ""
     End Sub
     Sub KondisiAwal()
-        Call Koneksi()
-        Da = New SqlDataAdapter("Select * from TBL_MAHASISWA order by NIM desc", Conn)
+        Call buka2()
+        'Call buka()
+        'Da = New SqlDataAdapter("Select * from TBL_MAHASISWA order by NIM desc", Conn)
+        Da = New SqlDataAdapter("Select * from PEMBELIAN", Conn)
         Ds = New DataSet
         Ds.Clear()
-        Da.Fill(Ds, "TBL_MAHASISWA")
-        DataGridView1.DataSource = (Ds.Tables("TBL_MAHASISWA"))
+        Da.Fill(Ds, "PEMBELIAN")
+        DataGridView1.DataSource = (Ds.Tables("PEMBELIAN"))
         ComboBox1.Items.Clear()
         ComboBox1.Items.Add("PRIA")
         ComboBox1.Items.Add("WANITA")
@@ -93,7 +83,7 @@ Public Class Form1
             If TextBox2.Text = "" Or TextBox3.Text = "" Or TextBox4.Text = "" Or ComboBox1.Text = "" Then
                 MsgBox("Data Belum Lengkap!, Silahkan isi semua Field")
             Else
-                Call Koneksi()
+                Call buka()
                 Cmd = New SqlCommand("Select * from TBL_MAHASISWA where NIM in (select max(NIM) from TBL_MAHASISWA)", Conn)
                 Dim urutan As String
                 Dim hitung As Long
@@ -133,7 +123,7 @@ Public Class Form1
             If TextBox1.Text = "" Or TextBox2.Text = "" Or TextBox3.Text = "" Or TextBox4.Text = "" Or ComboBox1.Text = "" Then
                 MsgBox("Data Belum Lengkap!, Silahkan isi semua Field")
             Else
-                Call Koneksi()
+                Call buka()
                 Dim EditData As String = "Update TBL_MAHASISWA set NamaMahasiswa='" & TextBox2.Text & "', JenisKelamin='" & ComboBox1.Text & "', AlamatMahasiswa='" & TextBox3.Text & "', TelpMahasiswa='" & TextBox4.Text & "' where NIM='" & TextBox1.Text & "'"
                 Cmd = New SqlCommand(EditData, Conn)
                 Cmd.ExecuteNonQuery()
@@ -154,7 +144,7 @@ Public Class Form1
             If TextBox1.Text = "" Then
                 MsgBox("Data Belum Lengkap!, Silahkan isi semua Field")
             Else
-                Call Koneksi()
+                Call buka()
                 Dim HapusData As String = "Delete TBL_MAHASISWA where NIM='" & TextBox1.Text & "'"
                 Cmd = New SqlCommand(HapusData, Conn)
                 Cmd.ExecuteNonQuery()
@@ -166,7 +156,7 @@ Public Class Form1
 
     Private Sub TextBox1_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TextBox1.KeyPress
         If e.KeyChar = Chr(13) Then
-            Call Koneksi()
+            Call buka()
             Cmd = New SqlCommand("Select * From TBL_MAHASISWA Where NIM='" & TextBox1.Text & "'", Conn)
             Rd = Cmd.ExecuteReader
             Rd.Read()
@@ -182,7 +172,7 @@ Public Class Form1
     End Sub
 
     Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
-        Call Koneksi()
+        Call buka()
         Dim HapusData As String = "Delete TBL_MAHASISWA where NIM='" & TextBox1.Text & "'"
         Cmd = New SqlCommand(HapusData, Conn)
         Cmd.ExecuteNonQuery()
@@ -195,7 +185,7 @@ Public Class Form1
     End Sub
 
     Private Sub ExitToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExitToolStripMenuItem.Click
-        Close()
+        End
     End Sub
 
     Private Sub DataGridView1_CellMouseClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles DataGridView1.CellMouseClick
@@ -213,7 +203,7 @@ Public Class Form1
             'maka shorcut delete akan aktif
             Select Case e.KeyCode
                 Case Keys.Delete
-                    Call Koneksi()
+                    Call buka()
                     Dim HapusData As String = "Delete TBL_MAHASISWA where NIM='" & TextBox1.Text & "'"
                     Cmd = New SqlCommand(HapusData, Conn)
                     Cmd.ExecuteNonQuery()
@@ -234,5 +224,9 @@ Public Class Form1
 
     Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
         Call KondisiAwal()
+    End Sub
+
+    Private Sub MenuStrip1_ItemClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ToolStripItemClickedEventArgs) Handles MenuStrip1.ItemClicked
+
     End Sub
 End Class
